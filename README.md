@@ -23,3 +23,6 @@ For Todo Lists
 - GET /todo/:id: To get the todo by Id.
 -PATCH /todo/status/todoId: For toggling the status either completed or pending.
 
+To send the test Email uncomment the testSendEmail in server.ts file, add any dummy Id and email email address there.
+
+
