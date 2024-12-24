@@ -8,13 +8,13 @@ import { Request } from "../request";
 export const verifyJWT = asyncHandler(
     async (req: Request, res: Response, next: NextFunction) => {
 
-      console.log("here");
+      // console.log("here");
       
       const token =
         req.cookies?.accessToken ||
         req.header('Authorization')?.replace('Bearer ', '');
 
-        console.log(token);
+        // console.log(token);
         
   
       if (!token) {
@@ -30,7 +30,7 @@ export const verifyJWT = asyncHandler(
         const user = await User.findById(decodedToken?._id)
           .select('-password');
 
-        console.log(user, "######################")
+        // console.log(user, "######################")
   
         if (!user) {
           throw new ApiError(401, 'Invalid access token');

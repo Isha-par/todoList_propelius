@@ -26,7 +26,7 @@ export const sendEmail = async (to: string, subject: string, text: string) => {
 };
 
 export const scheduleTaskEmails = async () => {
-  console.log("function called");
+//   console.log("function called");
 
   // Schedule cron job to check tasks every minute
   cron.schedule("* * * * *", async () => {
@@ -47,7 +47,7 @@ export const scheduleTaskEmails = async () => {
         ],
       });
 
-      console.log(todos, "$$$$$$$$$$");
+    //   console.log(todos, "$$$$$$$$$$");
 
       for (const todo of todos) {
         // Fetch user details using userId from Task model
@@ -60,20 +60,20 @@ export const scheduleTaskEmails = async () => {
         let subject = "";
         let text = "";
 
-        console.log("here");
+        // console.log("here");
 
         if (
           todo.reminderTime <= currentTimeInUTC &&
           todo.reminderTime > new Date(currentTimeInUTC.getTime() - 60000)
         ) {
-          console.log("#############");
+        //   console.log("#############");
           subject = "Reminder: Task Due Soon";
           text = `This is a reminder for your task: ${todo.title}. It is due soon.`;
         } else if (
           todo.dueDate <= currentTimeInUTC &&
           todo.dueDate > new Date(currentTimeInUTC.getTime() - 60000)
         ) {
-          console.log("$$$$$$$$$$$$$");
+        //   console.log("$$$$$$$$$$$$$");
           subject = "Task Due Now";
           text = `Your task "${todo.title}" is due now. Please complete it.`;
         }
